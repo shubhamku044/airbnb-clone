@@ -13,7 +13,7 @@ const search = ({ searchResults }) => {
 
 	const range = `${formattedStartDate} - ${formattedEndDate}`;
 
-	console.log(searchResults);
+	// console.log(searchResults);
 	return (
 		<div>
 			<Header placeholder={`${location} | ${range} | ${noOfGuests}`} />
