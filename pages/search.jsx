@@ -1,17 +1,17 @@
-import { useRouter } from 'next/router';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
-import { format } from 'date-fns';
-import InfoCard from '../components/InfoCard';
+import { useRouter } from 'next/router'
+import Footer from '../components/Footer'
+import Header from '../components/Header'
+import { format } from 'date-fns'
+import InfoCard from '../components/InfoCard'
 
 const search = ({ searchResults }) => {
-	const router = useRouter();
-	const { location, startDate, endDate, noOfGuests } = router.query;
+	const router = useRouter()
+	const { location, startDate, endDate, noOfGuests } = router.query
 
-	const formattedStartDate = format(new Date(startDate), 'dd MMMM yy');
-	const formattedEndDate = format(new Date(endDate), 'dd MMMM yy');
+	const formattedStartDate = format(new Date(startDate), 'dd MMMM yy')
+	const formattedEndDate = format(new Date(endDate), 'dd MMMM yy')
 
-	const range = `${formattedStartDate} - ${formattedEndDate}`;
+	const range = `${formattedStartDate} - ${formattedEndDate}`
 
 	// console.log(searchResults);
 	return (
@@ -35,15 +35,7 @@ const search = ({ searchResults }) => {
 					</div>
 					<div className="flex flex-col space-y-6">
 						{searchResults.map(
-							({
-								img,
-								location,
-								title,
-								description,
-								star,
-								price,
-								total,
-							}) => (
+							({ img, location, title, description, star, price, total }) => (
 								<InfoCard
 									img={img}
 									location={location}
@@ -60,18 +52,18 @@ const search = ({ searchResults }) => {
 			</main>
 			<Footer />
 		</div>
-	);
-};
+	)
+}
 
-export default search;
+export default search
 
 export async function getServerSideProps() {
-	const searchResults = await fetch(`https://links.papareact.com/isz`).then(
+	const searchResults = await fetch(`https://www.jsonkeeper.com/b/5NPS`).then(
 		(res) => res.json()
-	);
+	)
 	return {
 		props: {
 			searchResults,
 		},
-	};
+	}
 }
